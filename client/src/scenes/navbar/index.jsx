@@ -39,9 +39,7 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user ? user.firstName : "Fake"} ${
-    user ? user.lastName : "Person"
-  }`;
+  const fullName = `${user.firstName} ${user.lastName}`;
 
   return (
     <FlexBetween padding="1rem 6%" backgroundColor={alt}>
@@ -56,7 +54,8 @@ const Navbar = () => {
               color: primaryLight,
               cursor: "pointer",
             },
-          }}>
+          }}
+        >
           Sociopedia
         </Typography>
         {isNonMobileScreens && (
@@ -64,7 +63,8 @@ const Navbar = () => {
             backgroundColor={neutralLight}
             borderRadius="9px"
             gap="3rem"
-            padding="0.1rem 1.5rem">
+            padding="0.1rem 1.5rem"
+          >
             <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
@@ -102,7 +102,8 @@ const Navbar = () => {
                   backgroundColor: neutralLight,
                 },
               }}
-              input={<InputBase />}>
+              input={<InputBase />}
+            >
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
@@ -112,7 +113,8 @@ const Navbar = () => {
         </FlexBetween>
       ) : (
         <IconButton
-          onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
+          onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
+        >
           <Menu />
         </IconButton>
       )}
@@ -127,11 +129,13 @@ const Navbar = () => {
           zIndex="10"
           maxWidth="500px"
           minWidth="300px"
-          backgroundColor={background}>
+          backgroundColor={background}
+        >
           {/* CLOSE ICON */}
           <Box display="flex" justifyContent="flex-end" p="1rem">
             <IconButton
-              onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}>
+              onClick={() => setIsMobileMenuToggled(!isMobileMenuToggled)}
+            >
               <Close />
             </IconButton>
           </Box>
@@ -142,10 +146,12 @@ const Navbar = () => {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            gap="3rem">
+            gap="3rem"
+          >
             <IconButton
               onClick={() => dispatch(setMode())}
-              sx={{ fontSize: "25px" }}>
+              sx={{ fontSize: "25px" }}
+            >
               {theme.palette.mode === "dark" ? (
                 <DarkMode sx={{ fontSize: "25px" }} />
               ) : (
@@ -171,7 +177,8 @@ const Navbar = () => {
                     backgroundColor: neutralLight,
                   },
                 }}
-                input={<InputBase />}>
+                input={<InputBase />}
+              >
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
