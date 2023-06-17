@@ -18,8 +18,12 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const primaryDark = palette.primary.dark;
   const main = palette.neutral.main;
   const medium = palette.neutral.medium;
-
-  const isFriend = friends.find((friend) => friend._id === friendId);
+  let isFriend;
+  try {
+    isFriend = friends.find((friend) => friend._id === friendId);
+  } catch (error) {
+    isFriend = false;
+  }
 
   const patchFriend = async () => {
     const response = await fetch(
@@ -44,8 +48,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           onClick={() => {
             navigate(`/profile/${friendId}`);
             navigate(0);
-          }}
-        >
+          }}>
           <Typography
             color={main}
             variant="h5"
@@ -55,8 +58,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
                 color: palette.primary.light,
                 cursor: "pointer",
               },
-            }}
-          >
+            }}>
             {name}
           </Typography>
           <Typography color={medium} fontSize="0.75rem">
@@ -66,8 +68,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       </FlexBetween>
       <IconButton
         onClick={() => patchFriend()}
-        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
-      >
+        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}>
         {isFriend ? (
           <PersonRemoveOutlined sx={{ color: primaryDark }} />
         ) : (
